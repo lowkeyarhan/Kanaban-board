@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="navigation">
+      <div class="searchbar">
+        <i class="fa-solid fa-magnifying-glass" id="searchicon"></i>
+        <input type="text" placeholder="type here to search" />
+      </div>
+      <div class="symbols">
+        <i class="fa-solid fa-plus" id="add" style="cursor: pointer"></i>
+        <i class="fa-solid fa-trash" id="delete" style="cursor: pointer"></i>
+        <i
+          class="fa-solid fa-circle-half-stroke"
+          id="theme"
+          style="cursor: pointer"
+        ></i>
+      </div>
+      <div class="filters">
+        <div class="pending" col="red"></div>
+        <div class="processing" col="orange"></div>
+        <div class="review" col="yellow"></div>
+        <div class="done" col=" rgb(0, 231, 0)"></div>
+      </div>
+    </div>
+
+    <!-- workspace -->
+    <div class="workspace">
+
+      <!-- modal -->
+      <div class="modal">
+        <div class="importance">
+          <div class="selection" col="red"></div>
+          <div class="options">
+            <div class="pending" col="red"></div>
+            <div class="processing" col="orange"></div>
+            <div class="review" col="yellow"></div>
+            <div class="done" col=" rgb(0, 231, 0)"></div>
+          </div>
+        </div>
+        <div class="txtarea">
+          <textarea
+            name=""
+            rows="5"
+            id=""
+            style="width: 100%"
+            placeholder="Enter any details"
+          ></textarea>
+        </div>
+        <div class="btn">
+          <button>Add now</button>
+        </div>
+      </div>
+
+      <!-- ticket -->
+      <!-- <div class="ticket">
+        <div class="ticketnav">
+          <div class="imp"></div>
+          <div class="uid"></div>
+        </div>
+        <div class="text"></div>
+      </div> -->
+    </div>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js"></script>
+  </body>
+</html>

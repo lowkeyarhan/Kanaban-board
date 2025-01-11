@@ -1,0 +1,197 @@
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* navigation bar styling */
+.navigation {
+  height: 5vh;
+  background-color: rgb(0, 122, 255);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.symbols {
+  color: white;
+  font-size: 30px;
+  width: max-content;
+  display: flex;
+  gap: 20px;
+}
+.searchbar {
+  width: max-content;
+  background-color: white;
+  height: 100%;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-right: 20px;
+}
+#searchicon {
+  color: rgb(44, 44, 46);
+  font-size: 20px;
+  margin-left: 20px;
+}
+.searchbar input {
+  border: none;
+  font-size: 20px;
+  border-style: none;
+  color: rgb(44, 44, 46);
+}
+.searchbar input:focus {
+  outline: none;
+}
+.searchbar input::placeholder {
+  color: rgb(44, 44, 46);
+  font-family: "Quicksand", serif;
+}
+.filters {
+  background-color: rgba(0, 0, 0, 0.29);
+  width: max-content;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 30px;
+}
+.pending {
+  background-color: red;
+  border-radius: 100px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+.processing {
+  background-color: orange;
+  border-radius: 100px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+.review {
+  background-color: yellow;
+  border-radius: 100px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+.done {
+  background-color: rgb(0, 231, 0);
+  border-radius: 100px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+/* workspace styling */
+.workspace {
+  padding: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 95vh;
+  justify-content: space-evenly;
+}
+
+/* modal box styling */
+.modal {
+  height: max-content;
+  width: 500px;
+  background-color: rgb(0, 122, 255);
+  border-radius: 10px;
+  display: none;
+  position: relative;
+}
+.importance {
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 10px 10px 0px 0px;
+}
+.selection {
+  background-color: red;
+  height: 30px;
+  width: 30%;
+  border-radius: 30px;
+}
+.options {
+  display: flex;
+  gap: 10px;
+}
+.txtarea {
+  padding: 20px;
+}
+textarea {
+  width: 100%; /* Covers the full width of the modal */
+  box-sizing: border-box; /* Includes padding in width calculation */
+  margin: 0; /* Removes any default margin */
+  padding: 10px; /* Optional: Adds spacing inside the textarea */
+  border: none; /* Optional: Removes the border for a cleaner look */
+  resize: none; /* Optional: Prevents resizing */
+  font-family: "Quicksand", serif;
+  font-size: 20px;
+}
+textarea::placeholder {
+  color: rgb(44, 44, 46);
+}
+textarea:focus {
+  outline: none;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.btn button {
+  font-size: 15px;
+  padding: 10px;
+  font-family: "Quicksand", serif;
+  border-radius: 10px;
+  border-style: none;
+  cursor: pointer;
+}
+
+/*ticket styling */
+.ticket {
+  height: max-content;
+  width: 300px;
+  background-color: rgb(0, 122, 255);
+  border-radius: 10px;
+}
+.ticket .ticketnav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.ticket .imp {
+  height: 30px;
+  width: 30%;
+  border-radius: 30px;
+  background-color: black;
+}
+.ticket .uid{
+    font-size: 20px;
+    font-family: "Quicksand", serif;
+    font-weight: bold;
+}
+.ticket .text {
+  background-color: aliceblue;
+  height: 150px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: "Quicksand", serif;
+  word-wrap: break-word;
+  line-height: 30px;
+  border-radius: 0px 0px 10px 10px;
+}
