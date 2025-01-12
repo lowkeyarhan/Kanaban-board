@@ -147,9 +147,7 @@ drkthm.addEventListener("click", () => {
       : "rgb(44, 44, 46)";
   });
   document.querySelectorAll(".uid").forEach((uid) => {
-    uid.style.color = isDark
-      ? "rgb(44, 44, 46)"
-      : " rgb(0, 122, 255)";
+    uid.style.color = isDark ? "rgb(44, 44, 46)" : " rgb(0, 122, 255)";
   });
 });
 
@@ -192,11 +190,15 @@ function createTicket(color, task, unid) {
   uid.className = "uid";
   uid.innerText = unid;
 
+  const delbtn = document.createElement("i");
+  delbtn.setAttribute("class", "fa-solid fa-trash-can");
+  delbtn.setAttribute("id", "ticketdel");
+
   const text = document.createElement("div");
   text.className = "text";
   text.innerText = task;
 
-  tnav.append(col, uid);
+  tnav.append(delbtn, col, uid);
   ticket.append(tnav, text);
   workspace.appendChild(ticket);
 }
@@ -209,3 +211,42 @@ options.forEach((option) => {
     selected.setAttribute("col", color);
   });
 });
+
+// Flag to track delete mode
+let isDeleteModeActive = false;
+del.addEventListener("click", function () {
+  const tickets = document.querySelectorAll(".ticket");
+  const deleteButtons = document.querySelectorAll("#ticketdel");
+  isDeleteModeActive = !isDeleteModeActive; // Toggle delete mode
+  for (let i = 0; i < tickets.length; i++) {
+    if (isDeleteModeActive) {
+      deleteButtons[i].style.display = "block";
+      tickets[i].addEventListener("mouseover", handleMouseOver);
+      tickets[i].addEventListener("mouseout", handleMouseOut);
+      deleteButtons[i].addEventListener("click", function () {
+        tickets[i].remove();
+      });
+    } else {
+      tickets[i].style.border = "none";
+      deleteButtons[i].style.display = "none";
+      tickets[i].removeEventListener("mouseover", handleMouseOver);
+      tickets[i].removeEventListener("mouseout", handleMouseOut);
+    }
+  }
+});
+
+// Named functions for event listeners
+function handleMouseOver(e) {
+  e.currentTarget.style.border = "2px solid red";
+  const deleteButton = e.currentTarget.querySelector("#ticketdel");
+  if (deleteButton) {
+    deleteButton.style.color = "red";
+  }
+}
+function handleMouseOut(e) {
+  e.currentTarget.style.border = "none";
+  const deleteButton = e.currentTarget.querySelector("#ticketdel");
+  if (deleteButton) {
+    deleteButton.style.color = "white";
+  }
+}

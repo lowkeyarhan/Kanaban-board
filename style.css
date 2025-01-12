@@ -94,8 +94,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 95vh;
-  justify-content: space-evenly;
+  gap: 35px;
+  min-height: 95vh;
 }
 
 /* modal box styling */
@@ -180,18 +180,24 @@ textarea:focus {
   border-radius: 30px;
   background-color: black;
 }
-.ticket .uid{
-    font-size: 20px;
-    font-family: "Quicksand", serif;
-    font-weight: bold;
+.ticket .uid {
+  font-size: 20px;
+  font-family: "Quicksand", serif;
+  font-weight: bold;
 }
 .ticket .text {
   background-color: aliceblue;
-  height: 150px;
+  min-height: 150px;
   padding: 10px;
   font-size: 20px;
   font-family: "Quicksand", serif;
   word-wrap: break-word;
   line-height: 30px;
   border-radius: 0px 0px 10px 10px;
+}
+#ticketdel{
+  font-size: 20px;
+  display: none;
+  color: white;
+  cursor: pointer;
 }
