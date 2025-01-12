@@ -1,111 +1,3 @@
-// const drkthm = document.querySelector("#theme");
-// const add = document.querySelector("#add");
-// const del = document.querySelector("#delete");
-// const workspace = document.querySelector(".workspace");
-// const srcbar = document.querySelector(".searchbar");
-// const inputbar = document.querySelector("input");
-// const nav = document.querySelector(".navigation");
-// const filter = document.querySelector(".filters");
-// const textarea = document.querySelector("textarea");
-// const modal = document.querySelector(".modal");
-// const btn = document.querySelector("button");
-// const tn = document.querySelector(".ticketnav");
-
-// //dark theme
-// drkthm.addEventListener("click", function (e) {
-//   if (workspace.style.backgroundColor === "rgb(72, 72, 74)") {
-//     workspace.style.backgroundColor = "white";
-//     srcbar.style.backgroundColor = "white";
-//     nav.style.backgroundColor = "rgb(0, 122, 255)";
-//     inputbar.style.backgroundColor = "white";
-//     add.style.color = "white";
-//     del.style.color = "white";
-//     drkthm.style.color = "white";
-//     filter.style.backgroundColor = "rgba(0, 0, 0, 0.29)";
-//     textarea.style.backgroundColor = "white";
-//     modal.style.backgroundColor = "rgb(0, 122, 255)";
-//     btn.style.backgroundColor = "white";
-//     btn.style.color = "black";
-//   } else {
-//     workspace.style.backgroundColor = "rgb(72, 72, 74)";
-//     srcbar.style.backgroundColor = "rgb(99, 99, 102)";
-//     inputbar.style.backgroundColor = "rgb(99, 99, 102)";
-//     nav.style.backgroundColor = "black";
-//     add.style.color = "rgb(0, 122, 255)";
-//     del.style.color = "rgb(0, 122, 255)";
-//     drkthm.style.color = "rgb(0, 122, 255)";
-//     filter.style.backgroundColor = "rgba(255, 255, 255, 0.29)";
-//     textarea.style.backgroundColor = "rgba(99,99,102)";
-//     modal.style.backgroundColor = "black";
-//     btn.style.backgroundColor = "rgb(0, 122, 255)";
-//     btn.style.color = "white";
-//     ticketnav.style.backgroundColor = "rgb(44, 44, 46)";
-//   }
-// });
-
-// //modal on-off
-// const additem = document.querySelector("#add");
-// additem.addEventListener("click", function () {
-//   modal.style.display = "block";
-// });
-
-// btn.disabled = true;
-
-// //enable the ad item button on real entries
-// let message = textarea.value;
-// textarea.addEventListener("keydown", function (e) {
-//   if (
-//     (event.keyCode >= 65 && event.keyCode <= 90) ||
-//     (event.keyCode >= 97 && event.keyCode <= 122) ||
-//     (event.keyCode >= 49 && event.keyCode <= 64)
-//   )
-//     console.log("y");
-//   btn.disabled = false;
-// });
-
-// //on clicking add item
-// btn.addEventListener("click", function () {
-//   const newid = shortid();
-//   //   console.log(message, "     ", newid);
-//   //   console.log(selected.getAttribute("col"));
-//   modal.style.display = "none";
-//   createTicket(selected.getAttribute("col"), textarea.value, newid);
-//   textarea.value = "";
-//   btn.disabled = true;
-// });
-
-// //function to create the tickets
-// function createTicket(color, task, unid) {
-//   const ticket = document.createElement("div");
-//   ticket.setAttribute("class", "ticket");
-//   const col = document.createElement("div");
-//   col.setAttribute("class", "imp");
-//   col.style.backgroundColor = color;
-//   const uid = document.createElement("div");
-//   uid.setAttribute("class", "uid");
-//   uid.innerText = unid;
-//   const tnav = document.createElement("div");
-//   tnav.setAttribute("class", "ticketnav");
-//   tnav.appendChild(col);
-//   tnav.appendChild(uid);
-//   ticket.appendChild(tnav);
-//   const text = document.createElement("div");
-//   text.setAttribute("class", "text");
-//   text.innerText = task;
-//   ticket.appendChild(text);
-//   workspace.appendChild(ticket);
-// }
-
-// //modal color filter choose
-// const selected = document.querySelector(".selection");
-// const options = document.querySelectorAll(".options");
-// for (let i = 0; i < options.length; i++) {
-//   options[i].addEventListener("click", function (e) {
-//     selected.style.backgroundColor = event.target.getAttribute("col");
-//     selected.setAttribute("col", event.target.getAttribute("col"));
-//   });
-// }
-
 // DOM Elements
 const drkthm = document.querySelector("#theme");
 const add = document.querySelector("#add");
@@ -149,6 +41,12 @@ drkthm.addEventListener("click", () => {
   document.querySelectorAll(".uid").forEach((uid) => {
     uid.style.color = isDark ? "rgb(44, 44, 46)" : " rgb(0, 122, 255)";
   });
+  document.querySelectorAll("#editbtn").forEach((editbtn) => {
+    editbtn.style.color = isDark ? "white" : " rgb(0, 122, 255)";
+  });
+  document.querySelectorAll("#ticketdel").forEach((ticketdel) => {
+    ticketdel.style.color = isDark ? "white" : " rgb(0, 122, 255)";
+  });
 });
 
 // Show Modal
@@ -164,14 +62,16 @@ textarea.addEventListener("input", () => {
 
 // Add Ticket on Button Click
 btn.addEventListener("click", () => {
-  const newid = shortid(); // Generate unique ID
-  const color = selected.getAttribute("col") || "white"; // Default color if none selected
+  const newid = shortid();
+  const color = selected.getAttribute("col") || "red"; // Default color if none selected
   createTicket(color, textarea.value.trim(), newid);
 
   // Reset Modal and Button
   modal.style.display = "none";
   textarea.value = "";
   btn.disabled = true;
+  selected.style.backgroundColor = "red";
+  selected.setAttribute("col", "red");
 });
 
 // Function to Create Tickets
@@ -194,11 +94,15 @@ function createTicket(color, task, unid) {
   delbtn.setAttribute("class", "fa-solid fa-trash-can");
   delbtn.setAttribute("id", "ticketdel");
 
+  const editbtn = document.createElement("i");
+  editbtn.setAttribute("class", "fa-solid fa-pen-to-square");
+  editbtn.setAttribute("id", "editbtn");
+
   const text = document.createElement("div");
   text.className = "text";
   text.innerText = task;
 
-  tnav.append(delbtn, col, uid);
+  tnav.append(editbtn, delbtn, col, uid);
   ticket.append(tnav, text);
   workspace.appendChild(ticket);
 }
@@ -212,15 +116,17 @@ options.forEach((option) => {
   });
 });
 
-// Flag to track delete mode
+//Delete ticket mode
 let isDeleteModeActive = false;
 del.addEventListener("click", function () {
   const tickets = document.querySelectorAll(".ticket");
   const deleteButtons = document.querySelectorAll("#ticketdel");
+  const editbtn = document.querySelectorAll("#editbtn");
   isDeleteModeActive = !isDeleteModeActive; // Toggle delete mode
   for (let i = 0; i < tickets.length; i++) {
     if (isDeleteModeActive) {
       deleteButtons[i].style.display = "block";
+      editbtn[i].style.display = "none";
       tickets[i].addEventListener("mouseover", handleMouseOver);
       tickets[i].addEventListener("mouseout", handleMouseOut);
       deleteButtons[i].addEventListener("click", function () {
@@ -228,6 +134,7 @@ del.addEventListener("click", function () {
       });
     } else {
       tickets[i].style.border = "none";
+      editbtn[i].style.display = "block";
       deleteButtons[i].style.display = "none";
       tickets[i].removeEventListener("mouseover", handleMouseOver);
       tickets[i].removeEventListener("mouseout", handleMouseOut);

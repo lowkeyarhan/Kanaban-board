@@ -195,9 +195,14 @@ textarea:focus {
   line-height: 30px;
   border-radius: 0px 0px 10px 10px;
 }
-#ticketdel{
+#ticketdel {
   font-size: 20px;
   display: none;
+  color: white;
+  cursor: pointer;
+}
+#editbtn {
+  font-size: 20px;
   color: white;
   cursor: pointer;
 }
